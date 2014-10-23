@@ -1,0 +1,64 @@
+<div class="page-header">
+  <h1><%= @title %> News</h1>
+</div>
+
+<a class="top_message" href="#layouts">Freakin' Awesome options</a>
+
+<% @week.each do |day_display, category_posts| %>
+  <% if @show_hotness %>
+    <% max_clicks = category_posts.map {|cp| cp.clicks}.max
+    max_clicks = 1 if max_clicks == 0 %>
+  <% end %>
+
+  <h3><%= day_display %> (<%= category_posts.size %> Total)</h3>
+  <ol class='posts_list_l2'>
+    <% category_posts.each do |cp| %>
+      <% if @show_hotness %>
+      <% click_percent = cp.clicks.to_f / max_clicks
+         background_color = Post.calculate_hex_color_code("FFCCCC", click_percent) %>
+     <% else %>
+       <% background_color = 'FFFFFF' %>
+     <% end %>
+        <li style='background-color: #<%= background_color %>;'>
+        <a href="/url_redirect?cp_id=<%= cp.id %>" target="_blank"><%= cp.post.title %></a>
+        <span class="domain">(<%= cp.post.host %>)</span>
+        <% if @show_info_line %>
+          <div class="info_line">
+            <%= cp.clicks %> Clicks
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="submitted">Submitted <%= distance_of_time_in_words(cp.post.created_at, Time.now) %> ago</span>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<a name="layouts"></a>
+<h3>Freakin' Awesome options</h3>
+<ul>
+  <li><b>Sorting</b> - Right now
+  <% if @sort_by_clicks %>
+     items with the most clicks are first.  <a href="/?sort_by_clicks=0">Show newest items first</a>.
+  <% else %>
+    newest items are first.  <a href="/?sort_by_clicks=1">Show items with most clicks first</a>.
+  <% end %>
+  </li>
+
+  <li><b>Show Hotness</b> - Right now
+  <% if @show_hotness %>
+     items with the most clicks have a red background.  <a href="/?show_hotness=0">Turn this off</a>.
+  <% else %>
+    everything has a white background.  <a href="/?show_hotness=1">Switch so that items with the most clicks have a red background</a>.
+  <% end %>
+  </li>
+
+  <li><b>Show Info Line</b> - Right now the info line (e.g. <i>3 Clicks &nbsp;&nbsp;&nbsp;&nbsp; Submitted about 13 hours ago</i>) is
+  <% if @show_info_line %>
+    displayed.  <a href="/?show_info_line=0">Hide the info line</a>.
+  <% else %>
+    hidden.  <a href="/?show_info_line=1">Show the info line</a>.
+  <% end %>
+  </li>
+
+</ul>

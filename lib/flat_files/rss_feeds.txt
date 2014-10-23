@@ -1,0 +1,16 @@
+http://9to5mac.com/feed/
+http://feeds.venturebeat.com/VentureBeat
+http://recode.net/feed/
+http://www.informationweek.com/rss_simple.asp
+http://www.amongtech.com/feed/
+http://feeds.gawker.com/gizmodo/full
+http://rssfeeds.usatoday.com/usatoday-TechTopStories
+http://rssfeeds.usatoday.com/UsatodaycomMoney-TopStories
+http://feeds.macrumors.com/MacRumors-All
+http://feeds.mercurynews.com/mngi/rss/CustomRssServlet/568/200222.xml
+http://www.computerworld.com/index.rss
+http://www.cnet.com/rss/all/
+http://www.cnet.com/rss/iphone-update/
+http://www.telegraph.co.uk/technology/news/rss
+http://feeds.wired.com/wired/index
+http://feeds.mashable.com/Mashable

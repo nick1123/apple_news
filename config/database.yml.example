@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: top_seo_development
+
+test:
+  adapter: postgresql
+  database: top_seo_test
